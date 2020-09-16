@@ -17,15 +17,17 @@ public class SpliteFileAndMakeScoreTable {
 	
 	public static void main(String[] args) throws Exception {
 		String inputDir = "data/";
-		String outputDir = "data/xuhongcao/sample/";
+		String outputDir = "data/xuhongcao/";
 		//String inputDir = "data/fresh_comp_offline/sample/";
 		//String outputDir = "data/fresh_comp_offline/sample/out/";
 //		String inputDir = args[0];
 //		String outputDir = args[1];
-		String userPath = inputDir + "tianchi_fresh_comp_train_user.csv";
+		String userPath = inputDir + "train22.csv";
 //		String userPath = inputDir + args[2];
 //		String outputPath = args[3];
-		String outputPath = outputDir + "user.csv";
+
+
+		String outputPath = outputDir + "score";
 
 
 
@@ -41,15 +43,19 @@ public class SpliteFileAndMakeScoreTable {
 
 
 
-		/*
+		/* 	*/
 		//����userToItem�Ĵ�ֱ�
 		Map<String, Map<String, Double>> scoreTable = DataProcess.makeScoreTable(userMap);
-		//DataProcess.output(scoreTable, outputDir + "scoreTable.csv" , userSet, itemSet, ",");
+//		DataProcess.output(scoreTable, outputDir + "scoreTable.csv" , userSet, itemSet, ",");
 		userMap.clear();
+
+		/**
+		 * user间的近视值的生产
+ 		 */
 		FileTool.initWriter1(outputPath);
 		CalculateSimilarity.execute(scoreTable, userSet, itemSet);
 		FileTool.closeWriter1();
-		*/
+
 		
 	}
 

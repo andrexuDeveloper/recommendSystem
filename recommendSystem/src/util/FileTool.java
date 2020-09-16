@@ -35,18 +35,28 @@ public class FileTool {
 	public static int count = 0;
 	
 	/** 
-	 * ³õÊ¼»¯Ğ´ÎÄ¼şÆ÷(µ¥Ò»Ö¸Õë)
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½Ğ´ï¿½Ä¼ï¿½ï¿½ï¿½(ï¿½ï¿½Ò»Ö¸ï¿½ï¿½)
 	 * */
 	public static void initWriter1(String writePath) {
 		try {
-			fos1 = new FileOutputStream(writePath);
+			File file=new File(writePath);
+			if(!file.exists()){
+				try {
+					file.createNewFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+
+			fos1 = new FileOutputStream(file);
 			ps1 = new PrintStream(fos1);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	/** 
-	 * ¹Ø±ÕÎÄ¼şÆ÷(µ¥Ò»Ö¸Õë)
+	 * ï¿½Ø±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½(ï¿½ï¿½Ò»Ö¸ï¿½ï¿½)
 	 * */
 	public static void closeRedaer() {
 		try {
@@ -57,7 +67,7 @@ public class FileTool {
 		}
 	}
 	/** 
-	 * ¹Ø±ÕÎÄ¼şÆ÷(µ¥Ò»Ö¸Õë)
+	 * ï¿½Ø±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½(ï¿½ï¿½Ò»Ö¸ï¿½ï¿½)
 	 * */
 	public static void closeWriter1() {
 		try {
@@ -68,7 +78,7 @@ public class FileTool {
 		}
 	}
 	/** 
-	 * ³õÊ¼»¯Ğ´ÎÄ¼şÆ÷(Ë«Ö¸Õë)
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½Ğ´ï¿½Ä¼ï¿½ï¿½ï¿½(Ë«Ö¸ï¿½ï¿½)
 	 * */
 	public static void initWriter2(String writePath1,String writePath2) {
 		try {
@@ -81,7 +91,7 @@ public class FileTool {
 		}
 	}
 	/** 
-	 * ¹Ø±ÕÎÄ¼şÆ÷(Ë«Ö¸Õë)
+	 * ï¿½Ø±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½(Ë«Ö¸ï¿½ï¿½)
 	 * */
 	public static void closeWriter2() {
 		try {
@@ -94,7 +104,7 @@ public class FileTool {
 		}
 	}
 	/** 
-	 * ³õÊ¼»¯Ğ´ÎÄ¼şÆ÷(ÈıÖ¸Õë)
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½Ğ´ï¿½Ä¼ï¿½ï¿½ï¿½(ï¿½ï¿½Ö¸ï¿½ï¿½)
 	 * */
 	public static void initWriter3(String writePath1,String writePath2,String writePath3) {
 		try {
@@ -109,7 +119,7 @@ public class FileTool {
 		}
 	}
 	/** 
-	 * ¹Ø±ÕÎÄ¼şÆ÷(ÈıÖ¸Õë)
+	 * ï¿½Ø±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½(ï¿½ï¿½Ö¸ï¿½ï¿½)
 	 * */
 	public static void closeWriter3() {
 		try {
@@ -193,6 +203,15 @@ public class FileTool {
         }
         return list;
     }
+
+	/**
+	 *  è¯»å–ç”¨æˆ·é—´çš„ç›¸è¿‘æ€§
+	 * @param path
+	 * @param isTitle
+	 * @param token
+	 * @return
+	 * @throws Exception
+	 */
 	public static Map<String, List<Score>> loadScoreMap(String path,boolean isTitle,String token) throws Exception {
 		fr = new FileReader(path);
 		br = new BufferedReader(fr);

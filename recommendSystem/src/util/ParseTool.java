@@ -38,35 +38,35 @@ public class ParseTool {
 		if (contents[1] != null && !contents[1].isEmpty()) {
 			user.setItemId(contents[1].trim());
 		}
-		/*
-		// 2.µ÷ÓÃCountFileTestÐè·Å¿ª£¬ÆäËüÐè×¢ÊÍ
-		if (contents[2] != null && !contents[2].isEmpty()) {
-			user.setBehaviorType(Integer.valueOf(contents[2].trim()));
-		}
+
+		// 2.ï¿½ï¿½ï¿½ï¿½CountFileTestï¿½ï¿½Å¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+//		if (contents[2] != null && !contents[2].isEmpty()) {
+//			user.setBehaviorType(Integer.valueOf(contents[2].trim()));
+//		}
+//
+		// 2.ï¿½ï¿½ï¿½ï¿½CountFileTestï¿½ï¿½Å¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+//		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
+//			user.setCount(Integer.valueOf(contents[n-1].trim()));
+//		}
+
 		
-		// 2.µ÷ÓÃCountFileTestÐè·Å¿ª£¬ÆäËüÐè×¢ÊÍ
-		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
-			user.setCount(Integer.valueOf(contents[n-1].trim()));
-		}
-		*/
-		
-		// 3.µ÷ÓÃPredictTestÐè·Å¿ª£¬ÆäËüÐè×¢ÊÍ
+		// 3.ï¿½ï¿½ï¿½ï¿½PredictTestï¿½ï¿½Å¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
 			user.setWeight(Double.valueOf(contents[n-1].trim()));
 		}
 		
-		/*
-		// 1.µ÷ÓÃSpliteFileAndMakeScoreTableÐè·Å¿ª£¬ÆäËüÐè×¢ÊÍ
-		if (contents[3] != null && !contents[3].isEmpty()) {
-			user.setUserGeoHash(contents[3].trim());
-		}
-		if (contents[4] != null && !contents[4].isEmpty()) {
-			user.setItemCategory(contents[4].trim());
-		}
-		if (contents[5] != null && !contents[5].isEmpty()) {
-			user.setTime(contents[5].trim());
-		}
-		*/
+
+		// 1.ï¿½ï¿½ï¿½ï¿½SpliteFileAndMakeScoreTableï¿½ï¿½Å¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+//		if (contents[3] != null && !contents[3].isEmpty()) {
+//			user.setUserGeoHash(contents[3].trim());
+//		}
+//		if (contents[4] != null && !contents[4].isEmpty()) {
+//			user.setItemCategory(contents[4].trim());
+//		}
+//		if (contents[5] != null && !contents[5].isEmpty()) {
+//			user.setTime(contents[5].trim());
+//		}
+
 		return user;
 	}
 	public static Score parseScore(String[] contents) {
