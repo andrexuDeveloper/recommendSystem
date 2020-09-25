@@ -19,16 +19,21 @@ public class MatchTest2 {
 //		String userDir = args[2];
 
 //		String inputDir = args[0];
-		String inputPath1 = "data/xuhongcao/predict.txt";
-		String userDir = "data/xuhongcao/sort/";
+		String inputPath1 = "data/xuhongcao2/predict/predict.txt";
+		String userDir = "data/xuhongcao2/sort/";
 
 		Map<String, List<String>> predictMap = FileTool.loadPredictData(inputPath1, false, ",");
+		//统计的是predict条数
 		int predictN = FileTool.count;
 		System.out.println(predictN);
+
+
 		FileTool.count = 0;
 		Map<String, List<String>> referenceMap = FileTool.loadTestData(predictMap, userDir, false, "\t");
 		int referenceN = FileTool.count;
 		System.out.println(referenceN);
+
+
 		DataProcess.prediction(predictMap, predictN, referenceMap, referenceN);
 	}
 

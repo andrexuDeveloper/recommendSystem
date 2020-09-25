@@ -70,6 +70,10 @@ public class DataProcess {
 
     public static void outputUser(List<User> userList) {
         for (User user : userList) {
+            if(user.getWeight()<=0){
+                System.out.println("calu error");
+            }
+
             FileTool.ps1.println(user.getUserId() + "\t" + user.getItemId() + "\t" + user.getWeight());
         }
     }
@@ -169,6 +173,7 @@ public class DataProcess {
         return weight;
     }
 
+
     public static List<User> reduceUserByItem(List<User> userList) {
         List<User> list = new ArrayList<User>();
         Map<String, User> userMap = new LinkedHashMap<String, User>();
@@ -206,7 +211,7 @@ public class DataProcess {
     }
 
     /**
-     *
+     * 为每个userId根据相近的user取前面5个userId，对应的5item的，每个userId获取20Item
      * @param scoreMap
      * @param fileNameList
      * @param userDir
@@ -225,10 +230,12 @@ public class DataProcess {
             Set<String> predictItemSet = new LinkedHashSet<String>();
             for (Score score : list) {
                 String userId2 = score.getItemId();
+
+
                 if (fileNameList.contains(userId2)) {
 
-
-                    List<User> userList = FileTool.readFileOne(userDir + userId2, false, "\t", "user");
+                    // 根据权重去前面的item
+                    List<User> userList = FileTool.readFileOne(userDir + userId2, false, "\t", "userWeight");
 
 
                     //取某个用户的前5个
@@ -266,8 +273,12 @@ public class DataProcess {
                 }
             }
         }
+
+        // 准确率、召回率、F值
         double precision = (1.0 * count / predictN) * 100;
+
         double recall = (1.0 * count / refN) * 100;
+
         double f1 = (2 * precision * recall) / (precision + recall);
         System.out.println("precision=" + precision + ",recall=" + recall + ",f1=" + f1);
     }

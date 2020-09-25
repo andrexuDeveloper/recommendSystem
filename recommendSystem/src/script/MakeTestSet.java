@@ -29,6 +29,7 @@ public class MakeTestSet {
 		String outputPath = "data/xuhongcao/scoretest.txt";
 
 		Map<String, Set<String>> map = FileTool.loadTestUser(inputPath, false, ",");
+
 		FileTool.initWriter1(outputPath);
 		DataProcess.output(map);
 		map.clear();

@@ -29,6 +29,57 @@ public class ParseTool {
 		}
 		return item;
 	}
+
+	/**
+	 * 解析用户行为文件
+	 * @param contents
+	 * @return
+	 */
+	public static User parseUserAction(String[] contents) {
+		User user = new User();
+		int n = contents.length;
+		if (contents[0] != null && !contents[0].isEmpty()) {
+			user.setUserId(contents[0].trim());
+		}
+		if (contents[1] != null && !contents[1].isEmpty()) {
+			user.setItemId(contents[1].trim());
+		}
+
+
+
+		// 1.����SpliteFileAndMakeScoreTable��ſ���������ע��
+		if (contents[3] != null && !contents[3].isEmpty()) {
+			user.setUserGeoHash(contents[3].trim());
+		}
+		if (contents[4] != null && !contents[4].isEmpty()) {
+			user.setItemCategory(contents[4].trim());
+		}
+		if (contents[5] != null && !contents[5].isEmpty()) {
+			user.setTime(contents[5].trim());
+		}
+
+		return user;
+	}
+
+
+	public static User parseUserWeight(String[] contents) {
+		User user = new User();
+		int n = contents.length;
+		if (contents[0] != null && !contents[0].isEmpty()) {
+			user.setUserId(contents[0].trim());
+		}
+		if (contents[1] != null && !contents[1].isEmpty()) {
+			user.setItemId(contents[1].trim());
+		}
+		//3.����PredictTest��ſ���������ע��
+		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
+			user.setWeight(Double.valueOf(contents[n-1].trim()));
+		}
+
+
+		return user;
+	}
+
 	public static User parseUser(String[] contents) {
 		User user = new User();
 		int n = contents.length;
@@ -40,21 +91,21 @@ public class ParseTool {
 		}
 
 		// 2.����CountFileTest��ſ���������ע��
-//		if (contents[2] != null && !contents[2].isEmpty()) {
-//			user.setBehaviorType(Integer.valueOf(contents[2].trim()));
-//		}
-//
+		if (contents[2] != null && !contents[2].isEmpty()) {
+			user.setBehaviorType(Integer.valueOf(contents[2].trim()));
+		}
+
 		// 2.����CountFileTest��ſ���������ע��
-//		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
-//			user.setCount(Integer.valueOf(contents[n-1].trim()));
-//		}
+		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
+			user.setCount(Integer.valueOf(contents[n-1].trim()));
+		}
 
 		
 		// 3.����PredictTest��ſ���������ע��
-		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
-			user.setWeight(Double.valueOf(contents[n-1].trim()));
-		}
-		
+//		if (contents[n-1] != null && !contents[n-1].isEmpty()) {
+//			user.setWeight(Double.valueOf(contents[n-1].trim()));
+//		}
+//
 
 		// 1.����SpliteFileAndMakeScoreTable��ſ���������ע��
 //		if (contents[3] != null && !contents[3].isEmpty()) {
